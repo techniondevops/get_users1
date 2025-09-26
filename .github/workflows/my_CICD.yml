@@ -75,3 +75,26 @@ jobs:
         run: docker push rtfm79/users_app:v1
 
 
+
+###############################################
+###############################################
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+
+    steps:
+      - name: Pull Docker image
+        run: |
+          docker pull rtfm79/users_app:v1
+
+      - name: Docker Run
+        run: |
+          docker run --rm rtfm79/users_app:v1 > users_app.output
+          cat users_app.output
+
+      - name: Upload users_app.output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: users_app_output
+          path: users_app.output.txt
