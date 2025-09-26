@@ -11,5 +11,7 @@ RUN pip install -r requirements.txt
 #install python requirements
 
 COPY . . 
+
+RUN pytest
 CMD ["python","users.py"]
 
