@@ -69,7 +69,7 @@ jobs:
       - name: Build and tag Docker image
         run: |
           docker build -t get_users:v3 ./app
-          docker tag get_users:v1 rtfm79/get_users:v3
+          docker tag get_users:v3 rtfm79/get_users:v3
 
       - name: Push Docker image
         run: docker push rtfm79/get_users:v3
