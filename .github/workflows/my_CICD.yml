@@ -72,7 +72,7 @@ jobs:
           docker tag users_app:v1 rtfm79/get_users:v3
 
       - name: Push Docker image
-        run: docker push rtfm79/users_app:v1
+        run: docker push rtfm79/get_users:v3
 
 
 
@@ -90,8 +90,8 @@ jobs:
 
       - name: Docker Run
         run: |
-          docker run --rm rtfm79/get_users:v3 > get_users.output
-          cat get_users.output
+          docker run --rm rtfm79/get_users:v3 > get_users.output.txt
+          cat get_users.output.txt
 
       - name: Upload get_users.output as artifact
         uses: actions/upload-artifact@v4
