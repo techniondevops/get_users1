@@ -68,8 +68,8 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          docker build -t users_app:v1 ./app
-          docker tag users_app:v1 rtfm79/users_app:v1
+          docker build -t get_users:v3 ./app
+          docker tag users_app:v1 rtfm79/get_users:v3
 
       - name: Push Docker image
         run: docker push rtfm79/users_app:v1
@@ -86,15 +86,15 @@ jobs:
     steps:
       - name: Pull Docker image
         run: |
-          docker pull rtfm79/users_app:v1
+          docker pull rtfm79/get_users:v3
 
       - name: Docker Run
         run: |
-          docker run --rm rtfm79/users_app:v1 > users_app.output
-          cat users_app.output
+          docker run --rm rtfm79/get_users:v3 > get_users.output
+          cat get_users.output
 
-      - name: Upload users_app.output as artifact
+      - name: Upload get_users.output as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: users_app_output
-          path: users_app.output.txt
+          name: get_users_output
+          path: get_users.output.txt
